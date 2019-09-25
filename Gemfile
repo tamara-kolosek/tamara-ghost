@@ -7,8 +7,20 @@ gem 'config'
 
 #Authentication
 gem 'devise'
+#Bootstrap
+#gem 'bootstrap', '~>4.0.0'
+#jQuery
+
+gem 'jquery-rails'
+
+gem 'pundit'
+
+gem 'bootstrap-sass'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
+
+gem 'coffee-rails'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
