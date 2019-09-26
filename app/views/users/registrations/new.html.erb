@@ -9,6 +9,25 @@
   </div>
 
   <div class="field">
+    <%= f.label :full_name %><br />
+    <%= f.text_field :full_name, autofocus: true, autocomplete: "full_name" %>
+  </div>
+  <p class="desc_text">Use your real name so people can recognise you</p>
+
+  <div class="field">
+    <%= f.label :slug %><br />
+    <%= f.text_field :slug, autofocus: true, autocomplete: "slug" %>
+  </div>
+  <p class="desc_text">https://till/kolosek.com/author/<%=@user.email%></p>
+
+
+  <div class="field">
+    <%= f.label :bio %><br />
+    <%= f.text_area :bio, autofocus: true, autocomplete: "bio" %>
+  </div>
+  <p class="desc_text">Write about you in 200 characters or less.></p>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
