@@ -1,22 +1,21 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   
   def new
-     super
+     @user = User.new
   end
 
   def create
-     super
-     if(is_first_user)
-      @user.role = 2
-     else
-      p sign_up_params
-      @user.role = 0
-      @user.slug(sign_up_params.slug)
-      @user.full_name(sign_up_params.full_name)
-      @user.bio(sign_up_params.bio)
-     end
-     @user.save
-     current_user = @user
+     super do
+       if(is_first_user)
+        @user.role = 2
+       else
+        p "accessed"
+        @user.role = 0
+       end
+       @user.save
+       current_user = @user
+       redirect_to login
+      end
   end
 
   def edit
@@ -30,6 +29,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.full_name(sign_up_params.full_name)
     @user.bio(sign_up_params.bio)
     @user.save
+    redirect_to user_path
   end
 
   def is_first_user

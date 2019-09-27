@@ -1,7 +1,15 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, html: {multipart: true}, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+
+  <p>
+    <%= f.label :image, "Attach an Image" %><br />
+    <%= f.file_field :image %>
+  </p>
+
+  
+
 
   <div class="field">
     <%= f.label :email %><br />
@@ -18,7 +26,6 @@
     <%= f.label :slug %><br />
     <%= f.text_field :slug, autofocus: true, autocomplete: "slug" %>
   </div>
-  <p class="desc_text">https://till/kolosek.com/author/<%=@user.email%></p>
 
 
   <div class="field">

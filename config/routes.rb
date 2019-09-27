@@ -5,18 +5,19 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   #devise_for :users, controllers: { sessions: 'users/sessions' , registrations: 'users/registrations'}
-
-  devise_for :users, skip: [:sessions, :registrations, :passwords]
+  #devise_for :users, :controllers => {:registrations => "registrations"}
+ 
+    devise_for :users, skip: [:sessions, :registrations, :passwords]
 
 	devise_scope :user do
 	  # sessions
-	  get    'login',  to: 'devise/sessions#new',     as: :new_user_session
+	  get    'sign_in',  to: 'devise/sessions#new',     as: :new_user_session
 	  post   'login',  to: 'devise/sessions#create',  as: :user_session
 	  delete 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
 	  # registrations
 	  put    '/account',  to: 'devise/registrations#update'
 	  delete '/account',  to: 'devise/registrations#destroy'
-	  post   '/account',  to: 'devise/registrations#create'
+	  post   '/account',  to: 'users/registrations#create'
 	  get    '/register', to: 'devise/registrations#new',    as: :new_user_registration
 	  get    '/account',  to: 'devise/registrations#edit',   as: :edit_user_registration
 	  patch  '/account',  to: 'devise/registrations#update', as: :user_registration

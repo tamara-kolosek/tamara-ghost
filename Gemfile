@@ -11,6 +11,8 @@ gem 'devise'
 #gem 'bootstrap', '~>4.0.0'
 #jQuery
 
+gem 'draper', github: 'drapergem/draper'
+
 gem 'jquery-rails'
 
 gem 'pundit'
@@ -19,6 +21,9 @@ gem 'bootstrap-sass'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
+
+#image upload
+gem "paperclip"
 
 gem 'coffee-rails'
 # Use sqlite3 as the database for Active Record

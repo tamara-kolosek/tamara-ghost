@@ -1,7 +1,31 @@
-
+<script> 
+    function mouseover() { 
+      document.getElementById("edit_link").style.display = "block"; 
+    } 
+              
+    function mouseout() { 
+      document.getElementById("edit_link").style.display = "none"; 
+    } 
+</script> 
 <h3> Team > <%=@user.email %> </h3>
 
-<%= form_with model: @user, url: account_path, class: "profile_form" do |f| %>
+<%= form_with model: @user, url: account_path, html: {multipart: true},class: "profile_form" do |f| %>
+    <div class="profile-pic" >
+      <div class="image"
+         onmouseover="mouseover()"
+         onmouseleave="mouseout()">
+         <%= @user.image %>
+      <div id="edit_link" onchange="this.form.submit()"
+      class="edit" style="display: none">
+      
+        <label for="file-input">
+         <span class="glyphicon glyphicon-camera"></span>
+        </label>
+        <%= f.file_field :image, onchange: "this.form.submit();", id:"file-input", style: "display: none"%> 
+      </p>
+      </div>
+    </div>
+  
 
   <div class="field">
     <%= f.label :full_name %><br />
@@ -55,7 +79,3 @@
   <%= f.submit "Update" %>
 
   <% end %>
-
-
-
-
