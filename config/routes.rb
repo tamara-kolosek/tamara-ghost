@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  resources :users, only: [:show, :index]
+  resources :users, only: [:show, :index, :new_member]
   get 'resourceshome/index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get "new_member" => 'users#new_member', :as => :new_member
+  #post 'new_user_invitation' => 'users_invitations#invite_resource', as: :new_user_invitation
+
+
   root to: "home#index"
 
-  #devise_for :users, controllers: { sessions: 'users/sessions' , registrations: 'users/registrations'}
-  #devise_for :users, :controllers => {:registrations => "registrations"}
- 
     devise_for :users, skip: [:sessions, :registrations, :passwords]
 
 	devise_scope :user do
@@ -25,6 +25,9 @@ Rails.application.routes.draw do
 	  # passwords
 	  get   'new-pass',  to: 'devise/passwords#new',    as: :new_user_password
 	  get   'edit-pass', to: 'devise/passwords#edit',   as: :edit_user_password
+	  #invitations
+	  get 'new_user_invitation', to: 'devise/invitations#new'
+	  post '/users/invitation/new', to: 'users_invitations#invite_resource', as: :invite
 	end
 
 end

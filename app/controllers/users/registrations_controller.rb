@@ -9,12 +9,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
        if(is_first_user)
         @user.role = 2
        else
-        p "accessed"
         @user.role = 0
        end
        @user.save
        current_user = @user
-       redirect_to login
       end
   end
 

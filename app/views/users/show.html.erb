@@ -6,6 +6,7 @@
     function mouseout() { 
       document.getElementById("edit_link").style.display = "none"; 
     } 
+    
 </script> 
 <h3> Team > <%=@user.email %> </h3>
 
@@ -19,7 +20,7 @@
       class="edit" style="display: none">
       
         <label for="file-input">
-         <span class="glyphicon glyphicon-camera"></span>
+         <span class="glyphicon glyphicon-camera">Edit picture</span>
         </label>
         <%= f.file_field :image, onchange: "this.form.submit();", id:"file-input", style: "display: none"%> 
       </p>

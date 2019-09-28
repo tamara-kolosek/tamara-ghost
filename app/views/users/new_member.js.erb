@@ -1,0 +1,17 @@
+//$("#modal_window").html("<%= escape_javascript(render 'new_member') %>").appendTo("body").modal();
+
+$("#modal-window").find(".modal-content").html("<%= j (render 'new_member') %>").modal();
+
+$("#modal-window").modal('show');
+
+$('#modal-window').on('submit', function() {
+  $('#modal-window').modal('hide');
+  $(".modal-backdrop").remove();
+});
+
+$(document).ready(function(){
+    $('.submit_inv').prop('disabled',true);
+    $('.text_inv').keyup(function(){
+        $('.submit_inv').prop('disabled', this.value == "" ? true : false);     
+    })
+});

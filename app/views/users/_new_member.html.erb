@@ -1,0 +1,22 @@
+<div class="modal-header">
+
+  <h4 class="modal-title" style = "float: left" id="myModalLabel">Invite new member</h4>
+  <button type="button" class="close" data-dismiss="modal">x</button>
+
+</div>
+
+<div class="modal-body">
+  <%= form_for(@user, url: invite_path(@user))do |f| %>
+    <%= f.label "Email" %> 
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "text_inv"%>
+    <%= f.select :role, ['author', 'admin'], :prompt => 'Select role' %>
+            
+    <%= f.submit "Update", class: "btn btn-primary submit_inv" %>
+  <% end %> 
+
+</div>
+
+<div class="modal-footer">
+
+
+</div>

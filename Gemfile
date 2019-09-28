@@ -15,6 +15,8 @@ gem 'draper', github: 'drapergem/draper'
 
 gem 'jquery-rails'
 
+gem 'devise_invitable', '~> 2.0.0'
+
 gem 'pundit'
 
 gem 'bootstrap-sass'

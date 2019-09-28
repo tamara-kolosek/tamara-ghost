@@ -1,13 +1,44 @@
-<h1> Team  </h1>
-  <% @users.each do |user| %>
-    <div 
-    style="border: 1px solid #45a4f7; 
-    padding: 10px;
-    margin:10px;">
-    <%= link_to user.full_name,  user_path(user), 
-                    method: :get %>
+<div style="padding-bottom: 60px"">
+  <div style="float: left" >
+	   <h1> Team members </h1>
+  </div>
+  <div style="float: right">
+  <%= link_to 'Invite people', new_member_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'}  %>
+  </div>
+</div>
+
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>
+
+<div style="margin: 10px">
+<h4>Invited users</h4><hr>
+  <% @invited_users.each do |user| %>
+    <div style="border: 1px 
+      solid #45a4f7; 
+      padding: 10px;
+      margin:10px;">
+    <%= link_to user.email,  user_path(user),method: :get %>
+    <p>Invitation sent: 
+      <%= distance_of_time_in_words(Time.now,user.invitation_sent_at) %> 
+      ago, expires in <%= distance_of_time_in_words((user.invitation_sent_at + 7.days), Time.now) %></p>
     </div>
   <% end %>
+</div>
+
+<div style="margin: 10px">
+<h4>Active users</h4><hr>
+  <% @users.each do |user| %>
+    <div style="border: 1px 
+	    solid #45a4f7; 
+	    padding: 10px;
+	    margin:10px;">
+    <%= link_to user.full_name,  user_path(user),method: :get %>
+    </div>
+  <% end %>
+</div>
 
 
 

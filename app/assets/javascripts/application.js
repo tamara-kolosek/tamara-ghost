@@ -1,4 +1,5 @@
 //= require jquery
+//= require bootstrap-modal
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap/alert
