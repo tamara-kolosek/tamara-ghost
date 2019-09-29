@@ -19,6 +19,8 @@ gem 'devise_invitable', '~> 2.0.0'
 
 gem 'pundit'
 
+gem 'kaminari'
+
 gem 'bootstrap-sass'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -1,4 +1,7 @@
 class UserDecorator < Draper::Decorator
+  
+  include ActionView::Helpers::DateHelper
+
   delegate_all
   decorates :user
 
@@ -21,4 +24,15 @@ class UserDecorator < Draper::Decorator
   def role 
     h.p("role")
   end
+
+  def last_seen
+    if not model.last_login.nil?
+      h.p("Last seen: "+distance_of_time_in_words(model.last_login, Time.now)+" ago")
+    end
+  end
+
+  def team 
+    h.link_to 'Team' , users_path, method: :get
+  end
+
 end

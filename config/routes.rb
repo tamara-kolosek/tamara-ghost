@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 	devise_scope :user do
 	  # sessions
 	  get    'sign_in',  to: 'devise/sessions#new',     as: :new_user_session
-	  post   'login',  to: 'devise/sessions#create',  as: :user_session
+	  post   'login',  to: 'users/sessions#create',  as: :user_session
 	  delete 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
 	  # registrations
 	  put    '/account',  to: 'devise/registrations#update'

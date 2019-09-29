@@ -9,4 +9,7 @@ class User < ApplicationRecord
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
   has_many :invitations, class_name: self.to_s, as: :invited_by
+
+  def team
+  end
 end

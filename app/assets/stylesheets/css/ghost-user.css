@@ -1,0 +1,7 @@
+.avatar {
+	height: 20px;
+	width: 100px;
+	display: inline-block;
+	border: solid black;
+	object-fit: contain;
+}

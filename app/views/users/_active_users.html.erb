@@ -1,0 +1,35 @@
+<style type="text/css">
+	.avatar-container{
+		height: 80px;
+		width: 100px;
+		display: inline-block;
+		object-fit: contain;
+	}
+	.avatar {
+		width: inherit;
+		height: inherit;
+		object-fit: contain;
+	}
+</style>
+
+<%= paginate active_users %>
+
+<div style="margin: 10px">
+<h4>Active users</h4><hr>
+  <% active_users.each do |user| %>
+    <div style="border: 1px 
+	    solid #45a4f7; 
+	    padding: 10px;
+	    margin:10px;">
+	    <div class="avatar-container">
+	    	<div class="avatar"><%= user.image %></div>
+	    </div>
+	    <div class="user_data">
+    		<%= link_to user.full_name,  user_path(user),method: :get %>
+		</div>
+		<div class="user_last_login">
+		  <%= user.last_seen %> 
+		</div>
+    </div>
+  <% end %>
+</div>

@@ -10,6 +10,13 @@
   margin: 4px 0 0;
 }
 
+.avatar {
+  height: 20%;
+  width: 100px;
+  display: block;
+  border: solid black;
+}
+
 .profile-pic {
   position: relative;
   display: inline-block;

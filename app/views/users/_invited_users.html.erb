@@ -1,0 +1,14 @@
+<div style="margin: 10px">
+<h4>Invited users</h4><hr>
+  <% invited_users.each do |user| %>
+    <div style="border: 1px 
+      solid #45a4f7; 
+      padding: 10px;
+      margin:10px;">
+    <%= link_to user.email,  user_path(user),method: :get %>
+    <p>Invitation sent: 
+      <%= distance_of_time_in_words(Time.now,user.invitation_sent_at) %> 
+      ago, expires in <%= distance_of_time_in_words((user.invitation_sent_at + 7.days), Time.now) %></p>
+    </div>
+  <% end %>
+</div>

@@ -3,7 +3,6 @@ class Users::SessionsController < Devise::SessionsController
 
   def new
      super
-     redirect_to root_path
   end
 
   def show
@@ -11,6 +10,9 @@ class Users::SessionsController < Devise::SessionsController
 
   def create
      super
+     current_user.last_login = Time.now
+     current_user.save
+     current_user.decorate
   end
 
   def destroy

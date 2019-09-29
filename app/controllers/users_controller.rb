@@ -5,7 +5,8 @@ class UsersController < ApplicationController
 	end
 
 	def index
-		@users = User.all
+		@users = UserDecorator.all.decorate
+		@users = Kaminari.paginate_array(@users).page(params[:page]).per(5)
 		@invited_users = get_invited_users
 	end
 

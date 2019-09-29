@@ -8,75 +8,7 @@
     } 
     
 </script> 
+
 <h3> Team > <%=@user.email %> </h3>
 
-<%= form_with model: @user, url: account_path, html: {multipart: true},class: "profile_form" do |f| %>
-    <div class="profile-pic" >
-      <div class="image"
-         onmouseover="mouseover()"
-         onmouseleave="mouseout()">
-         <%= @user.image %>
-      <div id="edit_link" onchange="this.form.submit()"
-      class="edit" style="display: none">
-      
-        <label for="file-input">
-         <span class="glyphicon glyphicon-camera">Edit picture</span>
-        </label>
-        <%= f.file_field :image, onchange: "this.form.submit();", id:"file-input", style: "display: none"%> 
-      </p>
-      </div>
-    </div>
-  
-
-  <div class="field">
-    <%= f.label :full_name %><br />
-    <%= f.text_field :full_name, autofocus: true, autocomplete: "full_name", value: @user.full_name  %>
-  </div>
-  <p class="desc_text">Use your real name so people can recognise you</p>
-
-  <div class="field">
-    <%= f.label :slug %><br />
-    <%= f.text_field :slug, autofocus: true, autocomplete: "slug", value: @user.slug  %>
-  </div>
-  <p class="desc_text">https://till/kolosek.com/author/<%=@user.slug%></p>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email, autofocus: true, autocomplete: "email"%>
-  </div>
-  <p class="desc_text">Used for notifications></p>
-  
- 
-  <br>
-  <%= f.label :bio %><br />
-  <%= f.text_area :bio, size: "30x10" %>
-   <p class="desc_text">Write about you in 200 characters or less.></p>
-
-   <div class="field">
-    <%= f.label :old_password %> <br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <% if @user.role == "admin" %>
-   <%= select_tag(:role, options_for_select([['Author', 0], ['Editor', 1], ['Admin', 2]]) )%>
-
-
-  	<div class="field">
-    <%= f.label :new_password %> <br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :verify_password %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <%end%>
-
-  <%= f.submit "Update" %>
-
-  <% end %>
+<%= render "form", user: @user %> 
