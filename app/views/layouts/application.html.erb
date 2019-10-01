@@ -29,11 +29,6 @@
       <li class="nav-item active">
         <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          
-            <% if !current_user.nil? %>
-              <span><%= current_user.full_name %></span>
-            <% end %>
-           
         </a>
       </li>
       <% if !current_user.nil? %>
@@ -51,15 +46,13 @@
           <br>
       <% end %>
 
-      <% if !current_user.nil? %>
-      
-      <%= current_user.team %>
-        <% if current_user.role == "admin" %>
-          
-            <%= link_to 'Team',  users_path, 
-                        method: :get %></a>
-        <%end%>
+      <% if !current_user.nil? %> 
+        <% if current_user.is_admin || current_user.is_editor %>
+          <%= current_user.team %> -
+        <% end %>
+        <%= current_user.stories %>
       <%end%>
+
     </ul>
   </div>
     <div id="content-wrapper">

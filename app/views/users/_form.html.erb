@@ -45,7 +45,7 @@
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
-  <%if is_user_admin(user) %>
+  <%if user.is_admin %>
    <%= select_tag(:role, options_for_select([['Author', 0], ['Editor', 1], ['Admin', 2]]) )%>
 
 

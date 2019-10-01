@@ -9,7 +9,14 @@ class User < ApplicationRecord
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
   has_many :invitations, class_name: self.to_s, as: :invited_by
+  has_many :storys
 
-  def team
+  def is_admin
+  	return self.role == "admin"
   end
+
+  def is_editor 
+    return self.role == "editor"
+  end
+  
 end

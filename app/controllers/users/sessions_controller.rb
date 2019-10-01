@@ -1,4 +1,5 @@
 
+
 class Users::SessionsController < Devise::SessionsController
 
   def new
@@ -12,7 +13,7 @@ class Users::SessionsController < Devise::SessionsController
      super
      current_user.last_login = Time.now
      current_user.save
-     current_user.decorate
+     authorize current_user
   end
 
   def destroy

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+	include Pundit
+	
 	def show
 		@user = UserDecorator.find(params[:id]).decorate
 	end
@@ -22,4 +23,7 @@ class UsersController < ApplicationController
 		User.where.not(invitation_token: [nil, ""])
 	end
 
+	def decorate_current_user
+		@current_user = UserDecorator.find(current_user.id).decorate
+	end
 end

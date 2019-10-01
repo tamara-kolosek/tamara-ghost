@@ -1,0 +1,15 @@
+<%= form_with(model: @story, local: true, url: story_index_path) do |f| %>
+
+	<div class="field">
+	    <%= f.label :title %><br />
+	    <%= f.text_field :title, autofocus: true, autocomplete: "title" %>
+	  </div>
+	<div class="field">
+	    <%= f.label :content %><br />
+	    <%= f.text_field :content, autofocus: true, autocomplete: "content" %>
+	</div>
+
+	<div class="actions">
+	    <%= f.submit "Publish" %>
+	</div>
+<% end %>	

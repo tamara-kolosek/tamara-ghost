@@ -1,0 +1,9 @@
+<h1> Stories</h1>
+<%= link_to "New story", new_story_path %>
+<hr>
+
+<% if current_user.is_admin %>
+	<%= render "stories", stories: @stories %>
+<% else %>
+	<%= render "stories", stories: @user_stories %>
+<% end %>

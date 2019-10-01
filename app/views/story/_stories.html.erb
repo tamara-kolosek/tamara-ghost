@@ -1,0 +1,8 @@
+<% stories.each do |story| %> 
+	<b><%= link_to story.title, story_path(story), 
+                    method: :get %></b>| Date: <%= story.created_at %><br>
+	<%= story.part_of_the_content %><br>
+	Author: <%= story.user.full_name %><br>
+	<hr>
+	
+<% end %>

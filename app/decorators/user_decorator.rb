@@ -32,7 +32,11 @@ class UserDecorator < Draper::Decorator
   end
 
   def team 
-    h.link_to 'Team' , users_path, method: :get
+    h.link_to('Team', h.users_path, method: :get)
   end
+
+  def stories
+    h.link_to('Stories', h.story_index_path, method: :get)
+  end  
 
 end

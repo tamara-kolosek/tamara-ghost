@@ -6,10 +6,6 @@ class ApplicationPolicy
     @record = record
   end
 
-  def team?
-    current_user.role == "admin"
-  end
-
   def index?
     false
   end
@@ -19,7 +15,7 @@ class ApplicationPolicy
   end
 
   def create?
-    false
+    true
   end
 
   def new?

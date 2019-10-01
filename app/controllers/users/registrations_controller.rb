@@ -2,6 +2,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   def new
      @user = User.new
+     authorize(@user)
   end
 
   def create
@@ -12,6 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         @user.role = 0
        end
        @user.save
+       authorize(@user)
        current_user = @user
       end
   end
