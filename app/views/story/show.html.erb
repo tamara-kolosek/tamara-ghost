@@ -1,7 +1,27 @@
+<script> 
+    function show_html() { 
+      $("#your_id").show();
+    } 
+
+    function hide_html() { 
+      $("#your_id").hide();
+    } 
+    
+</script> 
+
 <h1> <%= @story.title %> </h1>
 
 <%= render "form", story: @story %>
 
 <% if current_user.is_admin %>
-	<%= link_to 'Remove', story_url(@story), method: :delete %>
+	<%=link_to "Delete", story_path(@story.id), method: :delete,
+	data: {confirm: "Really delete the story?"} %><br>
 <% end %>
+
+<%= submit_tag 'View HTML', class: "ses_submit_btn", :onclick => "show_html()" %>
+<%= submit_tag 'Hide', class: "ses_submit_btn", :onclick => "hide_html()" %>
+
+<div class="hidden" style="display: none" id="your_id">
+   <%= markdown_render(@story.content) %>
+</div>
+

@@ -19,6 +19,8 @@ gem 'devise_invitable', '~> 2.0.0'
 
 gem 'pundit'
 
+gem 'redcarpet'
+
 gem 'kaminari'
 
 gem 'bootstrap-sass'
