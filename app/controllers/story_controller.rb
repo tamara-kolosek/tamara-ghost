@@ -16,6 +16,19 @@ class StoryController < ApplicationController
 		redirect_to story_index_path
 	end
 
+	def update 
+		@story = Story.find(params[:id])
+		@story.update(story_params)
+		@story.part_of_the_content = @story.content[0..40]
+		@story.save
+	end
+
+	def destroy
+		@story = Story.find(params[:id])
+		@story.destroy
+		redirect_to stories_path
+	end
+
 	def index 
 		@stories = Story.all.order(created_at: :desc)
 		@user_stories = Story.user_stories(current_user).order(created_at: :desc)

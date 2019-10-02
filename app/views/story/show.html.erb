@@ -1,7 +1,7 @@
 <h1> <%= @story.title %> </h1>
 
-<div>
-	<p>
-		<%= @story.content %>
-	</p>
-</div>
+<%= render "form", story: @story %>
+
+<% if current_user.is_admin %>
+	<%= link_to 'Remove', story_path(@story), method: :delete %>
+<% end %>
