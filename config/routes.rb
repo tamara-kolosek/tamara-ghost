@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  resources :tags
   resources :users, only: [:show, :index, :new_member]
   resources :story
   get 'resourceshome/index'
   get "new_member" => 'users#new_member', :as => :new_member
+  get "add_tags" => 'story#add_tags', :as => :add_tags
   #post 'new_user_invitation' => 'users_invitations#invite_resource', as: :new_user_invitation
 
 

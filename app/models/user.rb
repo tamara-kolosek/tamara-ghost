@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_attached_file :image
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
+  validates_presence_of :email
+
   has_many :invitations, class_name: self.to_s, as: :invited_by
   has_many :storys
 
@@ -20,3 +22,4 @@ class User < ApplicationRecord
   end
   
 end
+

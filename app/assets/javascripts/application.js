@@ -1,4 +1,5 @@
 //= require jquery
+//= require chosen
 //= require bootstrap-modal
 //= require jquery_ujs
 //= require bootstrap

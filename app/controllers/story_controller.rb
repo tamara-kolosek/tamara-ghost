@@ -40,6 +40,14 @@ class StoryController < ApplicationController
 		@story.save
 	end
 
+	def add_tags 
+		@story = Story.find(params[:id])
+		respond_to do |format|
+		  format.html
+		  format.js
+		end
+	end
+
 	def story_params 
 		params.require(:story).permit(:title, :part_of_the_content, :user_id, :content)
 	end

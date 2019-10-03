@@ -1,0 +1,19 @@
+<div class="modal-header">
+
+  <h4 class="modal-title" style = "float: left" id="myModalLabel">Add tags to story</h4>
+  <button type="button" class="close" data-dismiss="modal">x</button>
+
+</div>
+
+<div class="modal-body">
+  <%= form_for(@story, url: story_path(@story)do |f| %>
+    <%= f.label "Tags" %> 
+    <%= f.text_field :text, autofocus: true, autocomplete: "tags" , class: "text_inv"%>
+    <%= f.submit "Add", class: "btn btn-primary submit_inv" %>
+  <% end %> 
+
+</div>
+
+<div class="modal-footer">
+
+</div>
