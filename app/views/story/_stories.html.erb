@@ -3,6 +3,7 @@
                     method: :get %></b>| Date: <%= story.created_at %><br>
 	<%= story.part_of_the_content %><br>
 	Author: <%= story.user.full_name %><br>
+	<%= story.tag_list %>
 	<hr>
 	
 <% end %>

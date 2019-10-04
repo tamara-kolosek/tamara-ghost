@@ -34,3 +34,4 @@ ActsAsTaggableOnMigration.class_eval do
     drop_table :tags
   end
 end
+

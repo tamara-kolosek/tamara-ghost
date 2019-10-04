@@ -10,6 +10,10 @@
 	    <%= f.text_area :content, autofocus: true, autocomplete: "content", value: story.content  %>
 	</div>
 
+	<%= f.label :tag_list, 'Tags' %>
+	<%= f.text_field :tag_list, class: 'form-control' %>
+
+
 	<%= f.submit "Save" %>
 
 <% end %>

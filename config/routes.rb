@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :tags
+  concern :taggable do
+	  resources :tags, only: [:new, :index, :create]
+	end
   resources :users, only: [:show, :index, :new_member]
   resources :story
   get 'resourceshome/index'

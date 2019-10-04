@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_03_121316) do
+ActiveRecord::Schema.define(version: 2019_10_04_113907) do
 
   create_table "stories", force: :cascade do |t|
     t.string "title"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_10_03_121316) do
     t.integer "tagger_id"
     t.string "context", limit: 128
     t.datetime "created_at"
+    t.integer "story_id"
     t.index ["context"], name: "index_taggings_on_context"
     t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
