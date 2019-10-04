@@ -9,9 +9,10 @@
     
 </script> 
 
-<%= render "add_tags_modal" %>
 
 <h1> <%= @story.title %> </h1>
+<%= raw @story.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %>
+
 
 <%= render "form", story: @story %>
 

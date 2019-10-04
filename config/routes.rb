@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :tags
+  resources :tags, except: :show
+  get 'tags/:tag', to: 'story#index'
   concern :taggable do
 	  resources :tags, only: [:new, :index, :create]
 	end

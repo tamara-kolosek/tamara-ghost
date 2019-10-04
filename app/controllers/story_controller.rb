@@ -30,7 +30,11 @@ class StoryController < ApplicationController
 	end
 
 	def index 
-		@stories = Story.all.order(created_at: :desc)
+		if params[:tag]
+			@stories = Story.tagged_with(params[:tag])
+		else
+			@stories = Story.all.order(created_at: :desc)
+		end
 		@user_stories = Story.user_stories(current_user).order(created_at: :desc)
 	end
 

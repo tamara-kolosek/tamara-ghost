@@ -10,6 +10,7 @@ class Story < ApplicationRecord
 	validates :title, presence: true
 
 	scope :user_stories, lambda { |user| where(user_id: user.id)}
+	scope :tagged_with, lambda { |tag| joins(:taggings).where('taggings.tag_id = '+tag)}
 
 	def tag_list 
 		self.tags.collect do |tag|
