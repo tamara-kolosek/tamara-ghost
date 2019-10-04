@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-chosen'
+end
+
+
 ruby '2.5.1'
 
 gem 'config'
@@ -18,6 +23,10 @@ gem 'jquery-rails'
 gem 'devise_invitable', '~> 2.0.0'
 
 gem 'pundit'
+
+gem 'redcarpet'
+
+gem 'acts-as-taggable-on'
 
 gem 'kaminari'
 
@@ -60,6 +69,8 @@ group :development, :test do
 
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'factory_bot_rails'
+  gem 'shoulda-matchers'
   
   gem 'pry'
   gem 'pry-byebug', '~>1.3.3' # need this version for pry-remote to work
@@ -67,6 +78,8 @@ group :development, :test do
   gem 'pry-rails'
 
   gem "awesome_print"
+
+  gem "sidekiq"
 end
 
 group :development do
@@ -86,7 +99,11 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 
-gem 'rspec-rails', '~> 3.8'
+  gem 'shoulda'
+  gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
+
+  gem 'rspec-rails', '~> 3.8'
   gem 'rspec-activemodel-mocks'
   gem 'rspec-collection_matchers'
   gem 'rspec-mocks', '~> 3.8'
@@ -94,8 +111,9 @@ gem 'rspec-rails', '~> 3.8'
   gem 'simplecov', :require => false
   gem 'database_cleaner'
   gem 'selenium-webdriver'
-  gem 'factory_girl_rails', "~> 4.0"
- gem 'shoulda'
+  #gem 'factory_girl_rails', "~> 4.0"
+  gem "factory_bot_rails"
+  gem 'shoulda'
   gem 'email_spec'
 
   gem 'action_mailer_cache_delivery'

@@ -1,0 +1,15 @@
+<%= form_with model: story, url: story_path, html: {multipart: true} do |f| %>
+
+	<div class="field">
+	    <%= f.label :title %><br />
+	    <%= f.text_field :title, autofocus: true, autocomplete: "tiltle", value: story.title  %>
+	</div>
+
+	<div class="field">
+	    <%= f.label :content %><br />
+	    <%= f.text_area :content, autofocus: true, autocomplete: "content", value: story.content  %>
+	</div>
+
+	<%= f.submit "Save" %>
+
+<% end %>
