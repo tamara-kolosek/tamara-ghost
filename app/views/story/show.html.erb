@@ -24,6 +24,6 @@
 <%= submit_tag 'Hide', class: "ses_submit_btn", :onclick => "hide_html()" %>
 
 <div class="hidden" style="display: none" id="your_id">
-   <%= markdown_render(@story.content) %>
+   <%= @story.markdown_content %>
 </div>
 

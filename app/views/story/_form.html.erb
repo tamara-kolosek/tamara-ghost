@@ -10,9 +10,6 @@
 	    <%= f.text_area :content, autofocus: true, autocomplete: "content", value: story.content  %>
 	</div>
 
-	HTML:
-	<%= markdown_render(@story.content) %>
-
 	<%= f.submit "Save" %>
 
 <% end %>

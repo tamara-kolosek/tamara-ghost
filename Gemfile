@@ -78,6 +78,8 @@ group :development, :test do
   gem 'pry-rails'
 
   gem "awesome_print"
+
+  gem "sidekiq"
 end
 
 group :development do
