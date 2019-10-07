@@ -1,9 +1,19 @@
+<script type="text/javascript" charset="utf-8">
+	$(function() {
+		$("#stories")
+	})
+</script>
 <h1> Stories</h1>
-<%= link_to "New story", new_story_path %>
-<hr>
+<%= link_to "New story", new_story_path %> 
 
-<% if current_user.is_admin %>
-	<%= render "stories", stories: @stories %>
-<% else %>
-	<%= render "stories", stories: @user_stories %>
+<%= form_tag story_index_path, :method => :get, :remote => true do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
 <% end %>
+
+<hr>
+<div id="stories">
+	<%= render "stories", stories: @stories %>
+</div>
