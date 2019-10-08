@@ -6,7 +6,8 @@ class UsersController < ApplicationController
 	end
 
 	def index
-		@users = UserDecorator.all.decorate
+		@users = current_user.members.decorate
+		#@users = UserDecorator.all.decorate
 		@users = Kaminari.paginate_array(@users).page(params[:page]).per(5)
 		@invited_users = get_invited_users
 	end
@@ -17,6 +18,11 @@ class UsersController < ApplicationController
 	    format.html
 	    format.js
 	  end
+	end
+
+	def remove_member
+		@member = User.find(params[:id])
+		current_user.team.delete_if { |user| user.id == params[:id] }
 	end
 
 	def get_invited_users

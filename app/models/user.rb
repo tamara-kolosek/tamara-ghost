@@ -13,6 +13,16 @@ class User < ApplicationRecord
   has_many :invitations, class_name: self.to_s, as: :invited_by
   has_many :storys
 
+  has_many :admin_relationships, foreign_key: :admin_id, class_name: 'Membership'
+  has_many :members, through: :admin_relationships, source: :member
+
+  has_many :member_relationships, foreign_key: :member_id, class_name: 'Membership'
+  has_many :admins, through: :member_relationships, source: :admin
+
+  def became_member(admin_id)
+    member_relationships.create(admin_id: admin_id)
+  end
+
   def is_admin
   	return self.role == "admin"
   end
