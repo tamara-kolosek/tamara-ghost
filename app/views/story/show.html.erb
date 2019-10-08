@@ -6,20 +6,13 @@
     function hide_html() { 
       $("#your_id").hide();
     } 
-    
 </script> 
 
-
 <h1> <%= @story.title %> </h1>
-<%= raw @story.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %>
+<%= @story.tag_links %>
 
-
-<%= render "form", story: @story %>
-
-<% if current_user.is_admin %>
-	<%=link_to "Delete", story_path(@story.id), method: :delete,
-	data: {confirm: "Really delete the story?"} %><br>
-<% end %>
+<%= raw render "form", story: @story %>
+<%= @story.delete_link(current_user) %>
 
 <%= submit_tag 'View HTML', class: "ses_submit_btn", :onclick => "show_html()" %>
 <%= submit_tag 'Hide', class: "ses_submit_btn", :onclick => "hide_html()" %>

@@ -1,3 +1,12 @@
+<script>
+	$(document).ready(function(){
+    $('.submit_inv').prop('disabled',true);
+    $('.text_inv').keyup(function(){
+        $('.submit_inv').prop('disabled', this.value == "" ? true : false);     
+    })
+});
+</script>
+
 <div class="modal-header">
 
   <h4 class="modal-title" style = "float: left" id="myModalLabel">Add tags to story</h4>

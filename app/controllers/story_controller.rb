@@ -7,7 +7,7 @@ class StoryController < ApplicationController
 	end
 
 	def show 
-		@story = Story.find(params[:id])
+		@story = StoryDecorator.find(params[:id]).decorate
 	end
 
 	def create
@@ -18,8 +18,9 @@ class StoryController < ApplicationController
 
 	def update 
 		@story = Story.find(params[:id])
+		@story.content_changed(story_params[:content])
 		@story.update(story_params)
-		@story.part_of_the_content = @story.content[0..40]
+		@story.update_part_of_the_content
 		@story.save
 	end
 

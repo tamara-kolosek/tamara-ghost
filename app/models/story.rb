@@ -12,6 +12,10 @@ class Story < ApplicationRecord
 	scope :user_stories, lambda { |user| where(user_id: user.id)}
 	scope :tagged_with, lambda { |tag| joins(:taggings).where('taggings.tag_id = '+tag.to_s)}
 
+	def update_part_of_the_content
+	    self.update_attributes(part_of_the_content: self.content[0..40])
+    end
+
 	def tag_list 
 		self.tags.collect do |tag|
 			tag.name
