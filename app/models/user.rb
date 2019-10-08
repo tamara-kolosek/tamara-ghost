@@ -19,7 +19,7 @@ class User < ApplicationRecord
   has_many :member_relationships, foreign_key: :member_id, class_name: 'Membership'
   has_many :admins, through: :member_relationships, source: :admin
 
-  def became_member(admin_id)
+  def add_member(admin_id)
     member_relationships.create(admin_id: admin_id)
   end
 
