@@ -31,4 +31,8 @@ class Story < ApplicationRecord
 	def save_content_as_markdown
 	  RedCarpetWorker.perform_async(self.content, self.id)
 	end
+
+	def self.search(search)
+	  where("title LIKE ?", "%#{search}%")
+	end
 end
