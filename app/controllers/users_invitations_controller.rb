@@ -2,7 +2,7 @@ class UsersInvitationsController < Devise::InvitationsController
 
 	def invite_resource
     @user = User.invite!(email: params[:user][:email], role: params[:user][:role])
-    @user.user_id = current_user.id
+    @user.blog_id = current_user.blog_id
     @user.save
     redirect_to users_path
   end
