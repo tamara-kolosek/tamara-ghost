@@ -6,7 +6,11 @@ class UsersController < ApplicationController
 	end
 
 	def index
-		@users = current_user.members.decorate
+		if current_user.is_admin
+			@users = Blog.find(current_user.blog_id).members.decorate
+		else
+			@users = current_user.decorate 
+		end
 		@users = Kaminari.paginate_array(@users).page(params[:page]).per(5)
 		@invited_users = get_invited_users
 	end

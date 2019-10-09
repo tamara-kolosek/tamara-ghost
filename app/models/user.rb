@@ -13,8 +13,6 @@ class User < ApplicationRecord
   has_many :invitations, class_name: self.to_s, as: :invited_by
   has_many :storys
 
-  has_many :members, class_name: 'User'
-
   def is_admin
   	return self.role == "admin"
   end
