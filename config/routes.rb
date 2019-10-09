@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   concern :taggable do
 	  resources :tags, only: [:new, :index, :create]
 	end
-  resources :users, only: [:show, :index, :new_member]
+  resources :users, only: [:show, :index, :new_member, :remove_member]
   resources :story
   get 'resourceshome/index'
   get "new_member" => 'users#new_member', :as => :new_member
+  get "remove_member" => 'users#remove_member', :as => :remove_member
   get "add_tags" => 'story#add_tags', :as => :add_tags
   #post 'new_user_invitation' => 'users_invitations#invite_resource', as: :new_user_invitation
 
@@ -35,6 +36,8 @@ Rails.application.routes.draw do
 	  #invitations
 	  get 'new_user_invitation', to: 'devise/invitations#new'
 	  post '/users/invitation/new', to: 'users_invitations#invite_resource', as: :invite
+	  post '/users/invitation/accept', to: 'users_invitations#accept_resource', as: :accept
 	end
 
 end
+ 
