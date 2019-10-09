@@ -23,6 +23,13 @@ class UsersController < ApplicationController
 	  end
 	end
 
+	def remove_member
+		user_to_remove = User.find(params[:format])
+		user_to_remove.blog_id = nil
+		user_to_remove.save
+		redirect_to users_path
+	end
+
 	def get_invited_users
 		User.where.not(invitation_token: [nil, ""])
 	end

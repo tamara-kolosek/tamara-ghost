@@ -36,9 +36,6 @@ class StoryController < ApplicationController
 		else
 			@stories = Story.all.order(created_at: :desc)
 		end
-		if current_user.is_admin
-			@stories = @stories.user_stories(current_user).order(created_at: :desc)
-		end
 		if params[:search]
 			@stories = @stories.search(params[:search])
 		end
