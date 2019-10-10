@@ -1,0 +1,6 @@
+<b><%= link_to story.title, story_path(story), 
+	                    method: :get %></b>| Date: <%= story.created_at %><br>
+	<%= story.part_of_the_content %><br>
+	Author: <%= story.user.full_name %><br>
+	<%= raw story.tags.map { |t| link_to t.name, tag_path(t) }.join(', ') %>
+<hr>
