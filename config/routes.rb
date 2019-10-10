@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   concern :taggable do
 	  resources :tags, only: [:new, :index, :create]
 	end
-  resources :users, only: [:show, :index, :new_member, :remove_member]
+  resources :users, only: [:show, :index, :new_member, :remove_member, :destroy]
   resources :story
   get 'resourceshome/index'
   get "new_member" => 'users#new_member', :as => :new_member

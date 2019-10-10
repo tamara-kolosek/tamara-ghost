@@ -24,9 +24,13 @@ class UsersController < ApplicationController
 	end
 
 	def remove_member
-		user_to_remove = User.find(params[:format])
-		user_to_remove.blog_id = nil
-		user_to_remove.save
+		UserRemoveWorker.perform_async(params[:format])
+		redirect_to users_path
+	end
+
+	def destroy 
+		user = User.find(params[:id])
+		user.destroy
 		redirect_to users_path
 	end
 
