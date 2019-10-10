@@ -7,9 +7,7 @@ class UsersInvitationsController < Devise::InvitationsController
       @user.save
       redirect_to users_path
   end
-
-    # this is called when accepting invitation
-    # should return an instance of resource class
+  
   def accept_resource
       resource = resource_class.accept_invitation!(update_resource_params)
       Analytics.report('invite.accept', resource.id)
