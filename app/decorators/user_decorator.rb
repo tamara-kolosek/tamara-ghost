@@ -39,8 +39,8 @@ class UserDecorator < Draper::Decorator
     h.link_to('Stories', h.story_index_path, method: :get)
   end 
 
-  def password_change_link(current_user_id)
-    if model.id == current_user_id
+  def password_change_link(current_user)
+    if model.id == current_user.id || current_user.is_admin
       h.link_to('Change your password', h.edit_user_registration_path, method: :get)
     end
   end 
