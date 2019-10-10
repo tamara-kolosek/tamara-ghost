@@ -32,15 +32,12 @@ class StoryController < ApplicationController
 
 	def index 
 		if params[:tag]
-			@stories = Story.tagged_with(params[:tag])
+			@stories = Story.tagged_with(params[:tag]).decorate
 		else
-			@stories = Story.all.order(created_at: :desc)
-		end
-		if current_user.is_admin
-			@stories = @stories.user_stories(current_user).order(created_at: :desc)
+			@stories = Story.all.order(created_at: :desc).decorate
 		end
 		if params[:search]
-			@stories = @stories.search(params[:search])
+			@stories = @stories.search(params[:search]).decorate
 		end
 	end
 

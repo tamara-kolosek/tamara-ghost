@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_07_092233) do
+ActiveRecord::Schema.define(version: 2019_10_09_115913) do
+
+  create_table "blogs", force: :cascade do |t|
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.integer "admin_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_memberships_on_admin_id"
+    t.index ["member_id", "admin_id"], name: "index_memberships_on_member_id_and_admin_id", unique: true
+    t.index ["member_id"], name: "index_memberships_on_member_id"
+  end
 
   create_table "stories", force: :cascade do |t|
     t.string "title"
@@ -75,6 +88,8 @@ ActiveRecord::Schema.define(version: 2019_10_07_092233) do
     t.integer "invited_by_id"
     t.integer "invitations_count", default: 0
     t.datetime "last_login"
+    t.integer "user_id"
+    t.integer "blog_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"

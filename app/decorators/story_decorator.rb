@@ -11,6 +11,10 @@ class StoryDecorator < Draper::Decorator
 	  end.join(",").html_safe
   end
 
+  def is_from_users_team(user_blog_id)
+    return model.user.blog_id == user_blog_id
+  end
+
   def delete_link(user)
     if user.is_admin
       h.link_to("Delete", h.story_path(model.id), method: :delete, data: {confirm: "Really delete the story?"})

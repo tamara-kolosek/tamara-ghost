@@ -9,6 +9,8 @@
     <p>Invitation sent: 
       <%= distance_of_time_in_words(Time.now,user.invitation_sent_at) %> 
       ago, expires in <%= distance_of_time_in_words((user.invitation_sent_at + 7.days), Time.now) %></p>
+      <br>
+      <%= link_to 'Remove',  user,  method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
   <% end %>
 </div>
